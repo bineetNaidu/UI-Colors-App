@@ -1,7 +1,9 @@
 {
   "name": "ui-color-app",
+  "description": "React UI-Colors App is a React app a for creating color palate",
   "version": "0.1.0",
   "private": true,
+  "author": "Bineet Naidu",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
