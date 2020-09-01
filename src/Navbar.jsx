@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "rc-slider";
+import { Link } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -34,7 +35,7 @@ export default class Navbar extends Component {
     return (
       <header className="Navbar">
         <div className="logo">
-          <a href="/">UI-COLOR-APP</a>
+          <Link to="/">UI-COLOR-APP</Link>
         </div>
         <div className="slider-container">
           <span>Level: {level}</span>

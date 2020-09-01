@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import seedColors from "./seedColors";
 import Palette from "./Palette";
+import PaletteList from "./PaletteList";
 import { generatePalette } from "./colorHelpers";
 import { Route, Switch } from "react-router-dom";
 
@@ -15,7 +16,7 @@ export default class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <h1>Mini Palettes goes here</h1>}
+            render={() => <PaletteList palettes={seedColors} />}
           />
           <Route
             exact
