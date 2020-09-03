@@ -49,27 +49,6 @@
   font-size: 12px;
 }
 
-.light-text {
-  color: white;
-}
-.ColorBox .dark-text {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.see-more {
-  background: rgba(255, 255, 255, 0.3);
-  position: absolute;
-  border: none;
-  right: 0;
-  bottom: 0;
-  color: white;
-  width: 60px;
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
-  text-transform: uppercase;
-}
-
 .copy-overlay {
   opacity: 0;
   z-index: 0;
