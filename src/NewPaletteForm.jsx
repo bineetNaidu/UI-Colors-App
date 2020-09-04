@@ -83,11 +83,12 @@ export class NewPaletteForm extends Component {
       open: true,
       newName: "",
       currentColor: "teal",
-      colors: [{ color: "blue", name: "blue" }],
+      colors: [],
     };
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
@@ -122,6 +123,16 @@ export class NewPaletteForm extends Component {
       newName: e.target.value,
     });
   }
+  handleSubmit() {
+    let newName = "Yo-Colors";
+    const newPalette = {
+      paletteName: newName,
+      colors: this.state.colors,
+      id: newName.toLowerCase().replace(/ /g, "-"),
+    };
+    this.props.savePalette(newPalette);
+    this.props.history.push("/");
+  }
 
   render() {
     const { classes } = this.props;
@@ -131,6 +142,7 @@ export class NewPaletteForm extends Component {
         <CssBaseline />
         <AppBar
           position="fixed"
+          color="default"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
@@ -147,6 +159,13 @@ export class NewPaletteForm extends Component {
             <Typography variant="h6" color="inherit" noWrap>
               Persistent drawer
             </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleSubmit}
+            >
+              Save Palette
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer
