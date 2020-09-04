@@ -90,6 +90,7 @@ export class NewPaletteForm extends Component {
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeColor = this.removeColor.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
@@ -141,6 +142,11 @@ export class NewPaletteForm extends Component {
     };
     this.props.savePalette(newPalette);
     this.props.history.push("/");
+  }
+  removeColor(colorName) {
+    this.setState({
+      colors: this.state.colors.filter((color) => color.name !== colorName),
+    });
   }
 
   render() {
@@ -244,7 +250,12 @@ export class NewPaletteForm extends Component {
           <div className={classes.drawerHeader} />
 
           {this.state.colors.map((color) => (
-            <DraggableColorBox color={color.color} name={color.name} />
+            <DraggableColorBox
+              key={color.name}
+              color={color.color}
+              name={color.name}
+              handleClick={() => this.removeColor(color.name)}
+            />
           ))}
         </main>
       </div>
