@@ -107,13 +107,13 @@ export class NewPaletteForm extends Component {
       [e.target.name]: e.target.value,
     });
   }
-  handleSubmit(newPaletteName) {
-    const newPalette = {
-      paletteName: newPaletteName,
-      colors: this.state.colors,
-      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
-    };
-    this.props.savePalette(newPalette);
+  handleSubmit(newPaletteObj) {
+    newPaletteObj.id = newPaletteObj.paletteName
+      .toLowerCase()
+      .replace(/ /g, "-");
+    newPaletteObj.colors = this.state.colors;
+
+    this.props.savePalette(newPaletteObj);
     this.props.history.push("/");
   }
   removeColor(colorName) {
