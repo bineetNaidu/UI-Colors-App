@@ -69,6 +69,10 @@ class PaletteFormNav extends Component {
     this.setState({ showForm: true });
   };
 
+  hideForm = () => {
+    this.setState({ showForm: false });
+  };
+
   render() {
     const {
       classes,
@@ -119,13 +123,17 @@ class PaletteFormNav extends Component {
               className={classes.button}
               onClick={this.handleClickOpen}
             >
-              Open form dialog
+              Save
             </Button>
           </div>
         </AppBar>
 
         {showForm && (
-          <PaletteMetaForm handleSubmit={handleSubmit} palettes={palettes} />
+          <PaletteMetaForm
+            handleSubmit={handleSubmit}
+            palettes={palettes}
+            hideForm={this.hideForm}
+          />
         )}
       </div>
     );
