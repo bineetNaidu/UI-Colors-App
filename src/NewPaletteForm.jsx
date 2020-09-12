@@ -12,29 +12,11 @@ import { arrayMove } from "react-sortable-hoc";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 
-const drawerWidth = 300;
+const drawerWidth = 350;
 
 const styles = (theme) => ({
   root: {
     display: "flex",
-  },
-  appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
   },
   hide: {
     display: "none",
@@ -45,6 +27,8 @@ const styles = (theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    display: "flex",
+    alignItems: "center",
   },
   drawerHeader: {
     display: "flex",
@@ -69,6 +53,20 @@ const styles = (theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+  },
+  drawerContainer: {
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttons: {
+    width: "100%",
+  },
+  button: {
+    width: "50%",
   },
 });
 
@@ -146,7 +144,6 @@ export class NewPaletteForm extends Component {
       <div className={classes.root}>
         <PaletteFormNav
           open={open}
-          classes={classes}
           handleDrawerOpen={this.handleDrawerOpen}
           handleSubmit={this.handleSubmit}
           palettes={this.props.palettes}
@@ -166,29 +163,35 @@ export class NewPaletteForm extends Component {
             </IconButton>
           </div>
           <Divider />
-          <Typography variant="h4">Design You Palette</Typography>
-          <div>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={this.clearColors}
-            >
-              Clear Palette
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={colors.length >= maxColor ? true : false}
-              onClick={this.addRandomColors}
-            >
-              {colors.length >= maxColor ? "FULL PALETTE" : "Random Colors"}
-            </Button>
+          <div className={classes.drawerContainer}>
+            <Typography variant="h4" gutterBottom>
+              Design Your Palette
+            </Typography>
+            <div className={classes.buttons}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={this.clearColors}
+                className={classes.buttons}
+              >
+                Clear Palette
+              </Button>
+              <Button
+                className={classes.buttons}
+                variant="contained"
+                color="primary"
+                disabled={colors.length >= maxColor ? true : false}
+                onClick={this.addRandomColors}
+              >
+                {colors.length >= maxColor ? "FULL PALETTE" : "Random Colors"}
+              </Button>
+            </div>
+            <ColorPickerForm
+              maxColor={maxColor}
+              colors={colors}
+              addNewColor={this.addNewColor}
+            />
           </div>
-          <ColorPickerForm
-            maxColor={maxColor}
-            colors={colors}
-            addNewColor={this.addNewColor}
-          />
         </Drawer>
         <main
           className={classNames(classes.content, {

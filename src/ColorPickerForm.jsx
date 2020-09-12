@@ -1,7 +1,25 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
 import { ChromePicker } from "react-color";
 import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
+const styles = {
+  picker: {
+    width: "100% !important",
+    marginTop: "2rem",
+  },
+  addColor: {
+    width: "100%",
+    padding: "1rem",
+    marginTop: "1rem",
+    fontSize: "1rem",
+  },
+  colorNameInput: {
+    width: "100%",
+    height: "70px",
+  },
+};
 
 class ColorPickerForm extends Component {
   constructor(props) {
@@ -43,7 +61,7 @@ class ColorPickerForm extends Component {
   };
 
   render() {
-    const { maxColor, colors } = this.props;
+    const { classes, maxColor, colors } = this.props;
 
     const { currentColor, newColorName } = this.state;
     return (
@@ -51,11 +69,16 @@ class ColorPickerForm extends Component {
         <ChromePicker
           color={currentColor}
           onChangeComplete={(newColor) => this.updateCurrentColor(newColor)}
+          className={classes.picker}
         />
         <ValidatorForm onSubmit={this.handleSubmit}>
           <TextValidator
             value={newColorName}
+            className={classes.colorNameInput}
             name="newColorName"
+            variant="filled"
+            placeholder="Color Name"
+            margin="normal"
             onChange={this.handleChange}
             validators={["required", "isColorNameUnique", "isColorUnique"]}
             errorMessages={[
@@ -69,6 +92,7 @@ class ColorPickerForm extends Component {
             color="primary"
             disabled={colors.length >= maxColor ? true : false}
             type="submit"
+            className={classes.addColor}
             style={{ backgroundColor: currentColor }}
           >
             {colors.length >= maxColor ? "FULL PALETTE" : "Add Color"}
@@ -79,4 +103,4 @@ class ColorPickerForm extends Component {
   }
 }
 
-export default ColorPickerForm;
+export default withStyles(styles)(ColorPickerForm);
