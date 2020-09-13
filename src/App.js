@@ -16,6 +16,7 @@ export default class App extends Component {
     };
     this.findPalette = this.findPalette.bind(this);
     this.savePalette = this.savePalette.bind(this);
+    this.deletePalette = this.deletePalette.bind(this);
   }
 
   findPalette(id) {
@@ -34,6 +35,14 @@ export default class App extends Component {
       JSON.stringify(this.state.palettes)
     );
   }
+  deletePalette(id) {
+    this.setState(
+      (st) => ({
+        palettes: st.palettes.filter((p) => p.id !== id),
+      }),
+      this.syncLocals
+    );
+  }
 
   render() {
     const { palettes } = this.state;
@@ -44,7 +53,11 @@ export default class App extends Component {
             exact
             path="/"
             render={(routerProps) => (
-              <PaletteList palettes={palettes} {...routerProps} />
+              <PaletteList
+                palettes={palettes}
+                {...routerProps}
+                deletePalette={this.deletePalette}
+              />
             )}
           />
           <Route
