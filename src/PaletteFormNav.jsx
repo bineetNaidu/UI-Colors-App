@@ -6,10 +6,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import PaletteMetaForm from "./paletteMetaForm";
+
+import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles/PaletteFormNavStyles";
 
 class PaletteFormNav extends Component {

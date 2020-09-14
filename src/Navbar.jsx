@@ -5,8 +5,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
-import { withStyles } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
+
+import { withStyles } from "@material-ui/core";
 import NavbarStyles from "./styles/NavbarStyles";
 import "rc-slider/assets/index.css";
 
@@ -40,7 +41,7 @@ class Navbar extends Component {
     return (
       <header className={classes.Navbar}>
         <div className={classes.logo}>
-          <Link to="/">UI-COLOR-APP</Link>
+          <Link to="/">UI-COLORS</Link>
         </div>
         {showSlider && (
           <div className="slider-container">
