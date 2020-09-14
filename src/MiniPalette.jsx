@@ -13,7 +13,7 @@ function MiniPalette(props) {
     paletteName,
     emoji,
     colors,
-    handleClick,
+    goToPalette,
     id,
     openDialog,
   } = props;
@@ -28,6 +28,9 @@ function MiniPalette(props) {
     e.stopPropagation();
     // handleDelete(id);
     openDialog(id);
+  };
+  const handleClick = () => {
+    goToPalette(id);
   };
 
   return (

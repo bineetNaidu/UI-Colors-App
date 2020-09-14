@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import seedColors from "./seedColors";
 import Palette from "./Palette";
 import PaletteList from "./PaletteList";
@@ -11,7 +11,7 @@ import Page from "./Page";
 
 import "./styles/Page.css";
 
-export default class App extends Component {
+export default class App extends PureComponent {
   constructor(props) {
     super(props);
     const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
