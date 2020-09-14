@@ -109,6 +109,7 @@ export default class App extends PureComponent {
                     </Page>
                   )}
                 />
+                <Route render={() => <h1>404 NOT FOUND</h1>} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>
