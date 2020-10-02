@@ -12,7 +12,8 @@ export default {
     },
   },
   root: {
-    height: "100vh",
+    // height: "100vh",
+    paddingBottom: 30,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
