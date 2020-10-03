@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import classNames from "classnames";
-import Drawer from "@material-ui/core/Drawer";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import Button from "@material-ui/core/Button";
-import DraggableColorList from "./DraggableColorList";
-import { arrayMove } from "react-sortable-hoc";
-import PaletteFormNav from "./PaletteFormNav";
-import ColorPickerForm from "./ColorPickerForm";
-import seedColors from "./seedColors";
+import React, { Component } from 'react';
+import classNames from 'classnames';
+import Drawer from '@material-ui/core/Drawer';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Button from '@material-ui/core/Button';
+import DraggableColorList from './DraggableColorList';
+import { arrayMove } from 'react-sortable-hoc';
+import PaletteFormNav from './PaletteFormNav';
+import ColorPickerForm from './ColorPickerForm';
+import seedColors from './seedColors';
 
-import { withStyles } from "@material-ui/core/styles";
-import styles from "./styles/NewPaletteFormStyles";
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles/NewPaletteFormStyles';
 
 export class NewPaletteForm extends Component {
   static defaultProps = {
@@ -55,11 +55,11 @@ export class NewPaletteForm extends Component {
   handleSubmit(newPaletteObj) {
     newPaletteObj.id = newPaletteObj.paletteName
       .toLowerCase()
-      .replace(/ /g, "-");
+      .replace(/ /g, '-');
     newPaletteObj.colors = this.state.colors;
 
     this.props.savePalette(newPaletteObj);
-    this.props.history.push("/");
+    this.props.history.push('/');
   }
   removeColor(colorName) {
     this.setState({
@@ -85,6 +85,7 @@ export class NewPaletteForm extends Component {
       rndIdx = Math.floor(Math.random() * allColors.length);
       randomColor = allColors[rndIdx];
       isDuplicateColor = this.state.colors.some(
+        // eslint-disable-next-line
         (color) => color.name === randomColor.name
       );
     }
@@ -136,7 +137,7 @@ export class NewPaletteForm extends Component {
                 disabled={colors.length >= maxColor ? true : false}
                 onClick={this.addRandomColors}
               >
-                {colors.length >= maxColor ? "FULL PALETTE" : "Random Colors"}
+                {colors.length >= maxColor ? 'FULL PALETTE' : 'Random Colors'}
               </Button>
             </div>
             <ColorPickerForm
